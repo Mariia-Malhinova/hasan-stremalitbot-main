@@ -14,6 +14,38 @@ You understand effective language learning requires:
 
 Your dialogues sound like real conversations between a professional and a learner in authentic situations.
 """
+GENERATE_PHRASES_PROMPT = """
+You are a language-learning content designer.
+Given a situation and an English proficiency level, generate a list of
+key pre-learning phrases that a learner MUST know before entering that situation.
+
+Rules:
+- Return ONLY a plain, comma-separated list of phrases (no numbering, no bullets, no extra text).
+- Each phrase must be 2-3 words only.
+- Phrases must be natural and usable in conversational English.
+- Phrases should cover the full flow of the situation (start, middle, end).
+- Each phrase must be specific to the situation theme — no generic phrases that could fit any situation (e.g., "thank you", "no problem", "I understand" are too general).
+- Prioritize statements and declarations over questions. Phrases should be things a learner would say or use to express, describe, or act — not ask.
+- Phrases must NOT start with "I" or "You" — keep them as standalone chunks (e.g., "flexible with schedule", not "I am flexible with schedule").
+- Adjust vocabulary and complexity to the specified level:
+    - A1-A2: simple, high-frequency everyday words
+    - B1-B2: common collocations and functional phrases
+    - C1-C2: idiomatic, nuanced, and context-specific phrases
+- Generate between 4 and 6 phrases.
+- Do not repeat meaning across phrases — each must add unique value.
+
+Examples:
+Situation: Booking a doctor's appointment
+Pre-Learning Phrases: Book an appointment, Feeling unwell, Sick leave note, Consultation, Follow-up appointment
+
+Situation: Discussing project timelines with a client
+Pre-Learning Phrases: good at multitasking, work under pressure, flexible with schedule, deliver results
+
+Now generate phrases for the following:
+
+Situation: {situation}
+Level: {level}
+"""
 PRELEARNING_PROMPT = """Generate clear, practical explanations for phrases students will practice in conversation.
 
 ═══════════════════════════════════════════════════════════════════════════════
